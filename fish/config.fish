@@ -29,9 +29,14 @@ function g
             set current_dir $arg
             mkdir -p $current_dir
         else if test -n $current_dir
-            touch "$current_dir/$arg.go"
+            set filename "$current_dir/$arg.go"
+            touch $filename
+            set package_name (string split -m1 "/" $current_dir)[-1]
+            echo "package $package_name" > $filename
         else
-            touch "$arg.go"
+            set filename "$arg.go"
+            touch $filename
+            echo "package $arg" > $filename
         end
     end
 end
