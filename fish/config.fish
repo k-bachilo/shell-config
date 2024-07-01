@@ -42,9 +42,20 @@ function g
 end
 
 function gg
-    go get $argv
+    set go_mod_file "go.mod"
+    if test -f ./$go_mod_file
+        go get $argv
+    else if test -d $argv[1]
+        cd $argv[1]
+        if test -f ./$go_mod_file
+            go get $argv[2..-1]
+        end
+    end
 end
 
 function gmi
-    go mod init $argv
+    set dir $argv[1]
+    mkdir -p $dir
+    cd $dir
+    go mod init $dir
 end
