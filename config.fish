@@ -5,7 +5,6 @@ end
 # Git
 set -Ux GIT_CONFIG_GLOBAL ~/.config/.gitconfig
 
-
 # Golang
 function g
     set current_dir ""
@@ -40,12 +39,23 @@ function gg
     end
 end
 
-
-function gmi
+function gi
     set dir $argv[1]
     mkdir -p $dir
     cd $dir
     go mod init $dir
+end
+
+function gt
+    set go_mod_file "go.mod"
+    if test -f ./$go_mod_file
+        go mod tidy
+    else if test -d $argv[1]
+        cd $argv[1]
+        if test -f ./$go_mod_file
+            go mod tidy
+        end
+    end
 end
 
 set -Ux GOPATH "$HOME/Workspace/.dependencies"
