@@ -2,9 +2,6 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-# Git
-set -Ux GIT_CONFIG_GLOBAL ~/.config/.gitconfig
-
 # Golang
 function g
     set current_dir ""
