@@ -56,6 +56,7 @@ function gt
 end
 
 set -Ux GOPATH "$HOME/Workspace/.dependencies"
-set -Ux PATH "$HOME/Workspace/.dependencies/bin"
 set -Ux GOCACHE "$HOME/Workspace/.dependencies/cache"
 set -Ux GOMODCACHE "$HOME/Workspace/.dependencies/pkg/mod"
+set -Ux GOBIN "$HOME/Workspace/.dependencies/bin"
+set -Ux PATH $GOBIN $PATH
