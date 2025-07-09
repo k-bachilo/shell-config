@@ -24,37 +24,6 @@ function g
     end
 end
 
-function gg
-    set go_mod_file "go.mod"
-    if test -f ./$go_mod_file
-        go get $argv
-    else if test -d $argv[1]
-        cd $argv[1]
-        if test -f ./$go_mod_file
-            go get $argv[2..-1]
-        end
-    end
-end
-
-function gi
-    set dir $argv[1]
-    mkdir -p $dir
-    cd $dir
-    go mod init $dir
-end
-
-function gt
-    set go_mod_file "go.mod"
-    if test -f ./$go_mod_file
-        go mod tidy
-    else if test -d $argv[1]
-        cd $argv[1]
-        if test -f ./$go_mod_file
-            go mod tidy
-        end
-    end
-end
-
 set -Ux GOPATH "$HOME/Workspace/.dependencies"
 set -Ux GOCACHE "$HOME/Workspace/.dependencies/cache"
 set -Ux GOMODCACHE "$HOME/Workspace/.dependencies/pkg/mod"
